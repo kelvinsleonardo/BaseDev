@@ -34,7 +34,7 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 		http
             // Libera URLs abaixo somente para aquele role, e libera tudo.
 			.authorizeRequests()
-				.antMatchers("/pizzas/**", "/ingredientes/**").hasRole("PIZZARIA")
+				.antMatchers("/usuarios/**","/pizzas/**", "/ingredientes/**").hasRole("ADMIN")
 				.anyRequest().permitAll()
 		.and()
 			.formLogin()
