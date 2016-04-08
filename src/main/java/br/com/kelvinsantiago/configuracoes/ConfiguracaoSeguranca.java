@@ -27,7 +27,7 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 	}
 
     /*
-     * Responsável por filtrar as requisições de login
+     * Responsável por filtrar as requisições de login.
      */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

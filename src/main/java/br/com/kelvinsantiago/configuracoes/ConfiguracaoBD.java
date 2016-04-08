@@ -33,7 +33,7 @@ public class ConfiguracaoBD {
     }
 
     /*
-     * Bean responsável por criar o entity manager.
+     * Bean responsável por criar o entity manager
      */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws Exception {

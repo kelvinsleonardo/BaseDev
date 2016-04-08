@@ -20,7 +20,7 @@ public class ServicoUsuario {
     }
 
     public Iterable<Usuario> buscarTodos() {
-        return usuarioRepositorio.findAll();
+       return usuarioRepositorio.findAll();
     }
 
 }

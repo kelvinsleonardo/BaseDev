@@ -22,7 +22,7 @@ public class UsuarioController {
 
     @RequestMapping(method=RequestMethod.GET)
     public String principal(){
-        return "t";
+        return "Teste";
     }
 
 
