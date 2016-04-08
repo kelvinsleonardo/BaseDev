@@ -1,12 +1,16 @@
 package br.com.kelvinsantiago.configuracoes;
 
+import java.util.List;
 import java.util.Locale;
 
+import com.google.gson.GsonBuilder;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -23,6 +27,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @ComponentScan(basePackages="br.com.kelvinsantiago")
 public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
+
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -50,7 +55,7 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	@Bean
 	public LocaleResolver localeResolver(){
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
-		resolver.setDefaultLocale(new Locale("en_US"));
+		resolver.setDefaultLocale(new Locale("pt_BR"));
 		return resolver;
 	}
 
@@ -71,8 +76,8 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	 */
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("cliente/index");
-		registry.addViewController("/login").setViewName("cliente/login");
+		registry.addViewController("/").setViewName("public/login");
+		registry.addViewController("/login").setViewName("public/login");
 	}
 
 	/*
@@ -81,6 +86,17 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+		registry.addResourceHandler("/**/*.html").addResourceLocations("/web/html/");
+		registry.addResourceHandler("/web/**").addResourceLocations("/web/");
+	}
+
+	// Excluindo campos sem notação @Expose
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
+		gsonHttpMessageConverter.setGson(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create());
+
+		converters.add(gsonHttpMessageConverter);
 	}
 	
 }
