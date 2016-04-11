@@ -1,6 +1,7 @@
 package br.com.kelvinsantiago.modelo.entidades;
 
 
+import com.google.gson.annotations.Expose;
 import javolution.util.FastList;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,30 +20,38 @@ public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Expose
     private Long id;
 
+    @Expose
     @NotNull
-    private String loginUnico;
+    @Column(unique=true)
+    private String login;
 
+    @Expose
     @NotNull
     private String senha;
 
+    @Expose
     @NotNull
     private Calendar dataCadastro;
 
     @Transient
     private String confirmacaoSenha;
 
+    @Expose
     @NotNull
     private String nome;
 
+    @Expose
     private String endereco;
 
-    private String Telefone;
+    @Expose
+    private String telefone;
 
+    @Expose
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Permissao> permissoes;
-
 
     public Long getId() {
         return id;
@@ -52,12 +61,12 @@ public class Usuario implements UserDetails {
         this.id = id;
     }
 
-    public String getLoginUnico() {
-        return loginUnico;
+    public String getLogin() {
+        return login;
     }
 
-    public void setLoginUnico(String loginUnico) {
-        this.loginUnico = loginUnico;
+    public void setLogin(String loginUnico) {
+        this.login = loginUnico;
     }
 
     public String getSenha() {
@@ -101,11 +110,11 @@ public class Usuario implements UserDetails {
     }
 
     public String getTelefone() {
-        return Telefone;
+        return telefone;
     }
 
     public void setTelefone(String telefone) {
-        Telefone = telefone;
+        telefone = telefone;
     }
 
     public Set<Permissao> getPermissoes() {
@@ -135,7 +144,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        return loginUnico;
+        return login;
     }
 
     @Override

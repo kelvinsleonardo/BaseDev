@@ -1,12 +1,15 @@
 package br.com.kelvinsantiago.modelo.repositorios;
 
 import br.com.kelvinsantiago.modelo.entidades.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {
+import java.util.List;
 
-	public Usuario findOneByLoginUnico(String login);
+@Repository
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
+
+	public Usuario findOneByLogin(String login);
 
 }

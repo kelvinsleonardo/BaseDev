@@ -1,1 +1,21 @@
-<div class="alert alert-success" role="alert">Olá esta é a view gestão de usuarios.</div>
+<div class="alert alert-info" role="alert">Olá esta é a view gestão de usuarios.</div>
+
+<table class="table table-bordered table-striped table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Permissoes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat=" usuario in usuarios ">
+            <td>{{usuario.loginUnico}}</td>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.telefone}}</td>
+            <td ng-repeat="permissoes in usuario.permissoes">{{permissoes.nome}}</td>
+        </tr>
+
+    </tbody>
+</table>

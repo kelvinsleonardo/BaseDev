@@ -1,5 +1,7 @@
 package br.com.kelvinsantiago.modelo.entidades;
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +13,8 @@ public class Permissao {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@Expose
 	private String nome;
 
 	public Long getId() {

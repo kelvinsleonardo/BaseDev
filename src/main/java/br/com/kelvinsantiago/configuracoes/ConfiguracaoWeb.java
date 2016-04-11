@@ -91,12 +91,12 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	}
 
 	// Excluindo campos sem notação @Expose
-	@Override
+	/*@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
-		gsonHttpMessageConverter.setGson(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create());
+		gsonHttpMessageConverter.setGson(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setDateFormat("dd-MM-yyyy'T'HH:mm:ss").create());
 
 		converters.add(gsonHttpMessageConverter);
-	}
+	}*/
 	
 }
