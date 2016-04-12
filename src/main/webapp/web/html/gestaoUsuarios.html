@@ -19,3 +19,13 @@
 
     </tbody>
 </table>
+<nav>
+    <ul class="pager">
+        <button class="btn btn-primary" ng-click="pagina = pagina-1; buscarUsuarios();" ng-disabled="!usuarios || pagina == 1">Anterior</button>
+        <button class="btn btn-primary" ng-click="pagina = pagina+1; buscarUsuarios();" ng-disabled="!usuarios || !temProximaPagina">Proximo</button>
+    </ul>
+</nav>
+
+<div>
+    <label>Numero de registros: {{numRegistros}}</label>
+</div>

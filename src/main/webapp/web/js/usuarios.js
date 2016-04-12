@@ -5,12 +5,23 @@
 
     app.controller('GestaoUsuarioController', function($http, $scope, $rootScope, $routeParams, $location){
 
-        console.log("Controlador Usuarios");
+        $scope.pagina = 1;
 
+        $scope.buscarUsuarios = function(){
+            buscarUsuarios()
+        }
 
-        $http.get("usuarios/buscar", {data: null}).success(function(data) {
-            $scope.usuarios = data.usuarios;
-        });
+        buscarUsuarios();
+
+        function buscarUsuarios(){
+            console.log("Buscando");
+            $http.get("usuarios/buscar/"+$scope.pagina, {data: null}).success(function(data) {
+                console.log(data);
+                $scope.usuarios = data.usuarios;
+                $scope.temProximaPagina = data.temProximaPagina;
+                $scope.numRegistros = data.numRegistros;
+            });
+        }
     });
 
 })();
