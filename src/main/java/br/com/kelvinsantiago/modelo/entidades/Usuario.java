@@ -16,7 +16,7 @@ import java.util.*;
  */
 
 @Entity
-public class Usuario implements UserDetails {
+public class Usuario implements UserDetails, IEntidade{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
