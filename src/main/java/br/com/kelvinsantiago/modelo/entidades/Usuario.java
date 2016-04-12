@@ -21,7 +21,7 @@ public class Usuario implements UserDetails, IEntidade{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Expose
-    private Long id;
+    private long id;
 
     @Expose
     @NotNull
@@ -53,11 +53,11 @@ public class Usuario implements UserDetails, IEntidade{
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Permissao> permissoes;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
